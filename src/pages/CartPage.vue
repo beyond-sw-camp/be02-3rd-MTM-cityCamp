@@ -26,7 +26,7 @@
               -->
               <td colspan="2">숙소 이미지</td>
               <td>숙소 이름</td>
-              <td>숙소 소개</td>
+              <td>숙소 주소</td>
               <td>체크인</td>
               <td>체크아웃</td>
               <td>예상 결제 비용</td>
@@ -55,7 +55,7 @@
                   {{ cartItem.getFindHouseDtoResList[0].name }}
                 </router-link>
               </td>
-              <td>{{ cartItem.getFindHouseDtoResList[0].content }}</td>
+              <td>{{ cartItem.getFindHouseDtoResList[0].address }}</td>
               <td>{{ cartItem.checkIn }}</td>
               <td>{{ cartItem.checkOut }}</td>
               <td>{{ cartItem.price.toLocaleString() }}원</td>
@@ -93,75 +93,6 @@
         -->
       </section>
     </main>
-
-    <nav>
-      <div class="container">
-        <div class="row">
-          <a href="#" class="col on">
-            <div class="button_wrap">
-              <img
-                src="@/assets/images/home/nav/campground-solid.svg"
-                alt="Home"
-                class="over"
-                width="100%"
-              />
-            </div>
-            <h2>캠핑온탑</h2>
-          </a>
-          <a href="#" class="col">
-            <div class="button_wrap">
-              <img
-                src="@/assets/images/home/nav/btn_book.png"
-                alt="Booking"
-                class="off"
-                width="100%"
-              />
-              <img
-                src="@/assets/images/home/nav/btn_book_h.png"
-                alt="Booking"
-                class="over"
-                width="100%"
-              />
-            </div>
-            <h2>예약</h2>
-          </a>
-          <a href="#" class="col">
-            <div class="button_wrap">
-              <img
-                src="@/assets/images/home/nav/btn_msg.png"
-                alt="Message"
-                class="off"
-                width="100%"
-              />
-              <img
-                src="@/assets/images/home/nav/btn_msg_h.png"
-                alt="Message"
-                class="over"
-                width="100%"
-              />
-            </div>
-            <h2>메시지</h2>
-          </a>
-          <a href="#" class="col">
-            <div class="button_wrap">
-              <img
-                src="@/assets/images/home/nav/btn_profile.png"
-                alt="Profile"
-                class="off"
-                width="100%"
-              />
-              <img
-                src="@/assets/images/home/nav/btn_profile_h.png"
-                alt="Profile"
-                class="over"
-                width="100%"
-              />
-            </div>
-            <h2>로그인</h2>
-          </a>
-        </div>
-      </div>
-    </nav>
   </div>
 </template>
 

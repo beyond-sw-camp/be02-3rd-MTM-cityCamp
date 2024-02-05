@@ -171,9 +171,11 @@
           </div>
         </div>
       </div>
+      -->
+
     </section>
 
-    <main>
+    <main class="mainClass">
       <!--
       <section id="category">
         <div class="swiper-container category_slide">
@@ -287,6 +289,54 @@
           </div>
         </div>
       </section>
+      <!-- Pagination Section -->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <!-- Previous Page Button -->
+          <li
+            class="page-item"
+            :class="{ disabled: houseStore.currentPage === 1 }"
+          >
+            <button
+              class="page-link"
+              @click="changePage(houseStore.currentPage - 1)"
+              aria-label="Previous"
+            >
+              <span aria-hidden="true">&laquo;</span>
+            </button>
+          </li>
+
+          <!-- Page Numbers -->
+          <li
+            v-for="page in pageArray"
+            :key="page"
+            :class="{
+              'page-item': true,
+              active: houseStore.currentPage === page,
+            }"
+          >
+            <button class="page-link" @click="changePage(page)">
+              {{ page }}
+            </button>
+          </li>
+
+          <!-- Next Page Button -->
+          <li
+            :class="{
+              'page-item': true,
+              disabled: houseStore.currentPage === houseStore.totalPages,
+            }"
+          >
+            <button
+              class="page-link"
+              @click="changePage(houseStore.currentPage + 1)"
+              aria-label="Next"
+            >
+              <span aria-hidden="true">&raquo;</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
     </main>
   </div>
 </template>
@@ -308,11 +358,30 @@ export default {
   },
   computed: {
     ...mapStores(useMemberStore, useHouseStore),
+    pageArray() {
+      return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+    },
   },
   components: {},
   async mounted() {
     await this.houseStore.getHouseList(1, 36);
     this.initializeSwiper();
+    this.totalPages = this.houseStore.totalPages;
+  },
+  watch: {
+    "houseStore.totalPages": {
+      handler(newVal) {
+        console.log("Total pages updated:", newVal);
+        this.totalPages = newVal;
+      },
+      immediate: true,
+    },
+    "houseStore.currentPage": {
+      handler(newVal) {
+        console.log("Current page updated:", newVal);
+      },
+      immediate: true,
+    },
   },
   methods: {
     initializeSwiper() {
@@ -336,11 +405,20 @@ export default {
     async searchHouse() {
       await this.houseStore.getHouseListByName(1, 36, this.searchQuery);
     },
+    async changePage(page) {
+      console.log("Changing page to:", page);
+      await this.houseStore.getHouseList(page, 36);
+      console.log("New house list:", this.houseStore.houseList);
+      console.log("Current page after change:", this.houseStore.currentPage);
+      console.log(
+        "Is previous button disabled?",
+        this.houseStore.currentPage === 1
+      );
+    },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import url(https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css);
 @import url(https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css);
@@ -404,6 +482,7 @@ export default {
   right: 15px; /* 브라우저 오른쪽 끝에서부터의 거리 */
   z-index: 99;
 }
+
 
 element.style {
   transition-duration: 0ms;

@@ -268,6 +268,12 @@ export default {
         console.error("회원가입 에러:", error);
       }
     },
+    changeName(e) {
+      this.name = e.target.value;
+    },
+    changeNickName(e) {
+      this.nickName = e.target.value;
+    },
   },
 };
 </script>
