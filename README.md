@@ -1,4 +1,4 @@
-# # 🏕️ 캠핑온탑 campingOnTop
+# 🏕️ 캠핑온탑 campingOnTop
 ![캠핑온탑 로고](https://github.com/Tesssssssssy/HanwhaBC-be02-campingOnTop-config/assets/105422037/177289fc-5e89-4907-aea1-c5eb453c4059)
 ![캠핑온탑-001](https://github.com/beyond-sw-camp/be02-2nd-MTM-cityCamp/assets/105422037/90d4ac16-a769-498b-912a-7ca4265230ad)
 
@@ -10,7 +10,7 @@
 
 ## 팀원 구성
 
-<div align="center">
+<div align="left">
 
 | **임태우** | **길민석** | **한경훈** | **이준국** |**장대현** |
 | :------: |  :------: | :------: | :------: |:------: |
@@ -23,12 +23,14 @@
 
 - **Vue.js** 
   - 
-- JWT
-  - 토큰 기반 인증을 구현하기 위해 사용하였습니다. Session 방식보다 확장성이 높고, 자원낭비가 덜하다고 생각해 (세션 클러스터링 등) 로그인 방식으로 JWT를 사용했습니다. [JWT](https://blog.naver.com/ghdalswl77/222517833354)
-- **MySQL 8.0.32**
-  - 상품 검색 기능을 지원하기 때문에 보다 편리한 검색을 위해 문자열 비교에서 대소 문자를 구분하지 않는다는 장점이 있는 MySQL을 사용했습니다.
--  **AWS EC2 배포**
-  - 스프링부트 프로젝트와 AWS RDS 연동으로 'campingOnTop' 에 웹사이트를 배포했습니다. 
+- **JWT**
+  - 
+- **MySQL 8.0.32 (AWS RDS)**
+  - 
+- **AWS EC2 springboot 서버 배포**
+  - 
+- **AWS EC2 springboot config 서버 배포**
+  - 
 
 <br />
 <div align="center">
