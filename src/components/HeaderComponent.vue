@@ -67,7 +67,7 @@
                   alt="사용자"
                   width="21"
                 />
-                <span>{{ decodedToken.nickname }}</span>
+                <span margin-left="5px">{{ decodedToken.nickname }}</span>
               </a>
               <!-- 직접 나열된 링크 -->
               <a href="/likes" class="btn">좋아요</a>
@@ -100,7 +100,6 @@
 
 <script>
 import { useMemberStore } from "/src/stores/useMemberStore";
-//import VueJwtDecode from "vue-jwt-decode";
 
 export default {
   name: "HeaderComponents",
@@ -128,11 +127,10 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     logout() {
-      // 로그아웃 로직 수정
       window.localStorage.removeItem("token");
       const store = useMemberStore();
-      store.isAuthenticated = false; // 스토어 상태 업데이트
-      store.decodedToken = {}; // 토큰 정보 초기화
+      store.isAuthenticated = false; 
+      store.decodedToken = {}; 
       this.isDropdownOpen = false;
       this.$router.push("/");
     },
