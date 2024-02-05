@@ -96,7 +96,7 @@
               <input
                 class="signup-email-input"
                 placeholder="성명"
-                @input="onInput"
+                v-model="name"
                 type="text"
                 id="name"
                 name="name"
@@ -106,7 +106,7 @@
               <input
                 class="signup-email-input"
                 placeholder="닉네임"
-                @input="onInput"
+                v-model="nickName"
                 type="text"
                 id="nickName"
                 name="nickName"
@@ -154,24 +154,9 @@
 
 <script>
 import axios from "axios";
-import { reactive } from "vue";
-
 
 export default {
   name: "SignupPage",
-  setUp() {
-    const state = reactive({
-      name: "",
-      nickName: "",
-    });
-
-    const onInput = ({ target: { value } }) => {
-      state.name = value;
-      state.nickName = value;
-    };
-
-    return state, onInput;
-  },
   data() {
     return {
       currentStep: 1,
@@ -179,6 +164,8 @@ export default {
       email: "",
       password: "",
       passwordCheck: "",
+      name: "",
+      nickName: "",
       gender: "",
       phoneNum: "",
       agreements: [
@@ -280,6 +267,12 @@ export default {
       } catch (error) {
         console.error("회원가입 에러:", error);
       }
+    },
+    changeName(e) {
+      this.name = e.target.value;
+    },
+    changeNickName(e) {
+      this.nickName = e.target.value;
     },
   },
 };

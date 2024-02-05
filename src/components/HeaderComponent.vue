@@ -1,6 +1,6 @@
 <template>
   <header>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <div class="navbar_menu" :class="{ open: isNavbarOpen }">
       <button class="btn" type="button" id="menu_close" @click="toggleNavbar">
         <svg
@@ -23,10 +23,10 @@
         <li class="nav-item">
           <a href="/cart" target="_blank">장바구니</a>
         </li>
-        <li class="nav-item"  v-if="isAuthenticated">
+        <li class="nav-item" v-if="isAuthenticated">
           <a target="_blank" @click="logout">로그아웃</a>
         </li>
-        <li class="nav-item"  v-if="!isAuthenticated">
+        <li class="nav-item" v-if="!isAuthenticated">
           <a target="_blank" href="/login">로그인</a>
         </li>
       </ul>
@@ -67,19 +67,33 @@
                   alt="사용자"
                   width="21"
                 />
-                <span>{{ decodedToken.nickname }}</span>
+                <span margin-left="5px">{{ decodedToken.nickname }}</span>
               </a>
               <!-- 직접 나열된 링크 -->
-              <a href="/likes" class="btn">좋아요</a>
-              <a href="/cart" class="btn">장바구니</a>
-              <a href="/login" @click.prevent="logout" class="btn">로그아웃</a>
+              <a href="/likes" class="btn"><img
+                  src="@/assets/images/header/heart-solid.svg"
+                  alt="사용자"
+                  width="21"
+                />좋아요</a>
+              <a href="/cart" class="btn"><img
+                  src="@/assets/images/header/bell-solid.svg"
+                  alt="사용자"
+                  width="21"
+                />장바구니</a>
+              <a href="/login" @click.prevent="logout" class="btn"><img
+                  src="@/assets/images/header/user-solid.svg"
+                  alt="사용자"
+                  width="21"
+                />로그아웃</a>
             </div>
           </div>
         </li>
 
         <!-- 항상 표시되는 호스트되기 버튼 -->
         <li class="nav-item" v-if="isAuthenticated">
-          <a href="/houseRegister" class="nav-link wehomehost_btn btn">숙소 등록</a>
+          <a href="/houseRegister" class="nav-link wehomehost_btn btn"
+            >숙소 등록</a
+          >
         </li>
       </ul>
 
@@ -88,7 +102,7 @@
           <img
             src="@/assets/images/home/logo.png"
             alt="Welcome home! Wehome"
-            width="111"
+           
           />
         </a>
       </div>
@@ -96,10 +110,8 @@
   </header>
 </template>
 
-
 <script>
 import { useMemberStore } from "/src/stores/useMemberStore";
-import VueJwtDecode from "vue-jwt-decode";
 
 export default {
   name: "HeaderComponents",
@@ -127,19 +139,30 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     logout() {
-      // 로그아웃 로직 수정
       window.localStorage.removeItem("token");
       const store = useMemberStore();
-      store.isAuthenticated = false; // 스토어 상태 업데이트
-      store.decodedToken = {}; // 토큰 정보 초기화
+      store.isAuthenticated = false; 
+      store.decodedToken = {}; 
       this.isDropdownOpen = false;
       this.$router.push("/");
+    },
+    decodeToken(token) {
+      const base64Url = token.split(".")[1];
+      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split("")
+          .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+          .join("")
+      );
+
+      return JSON.parse(jsonPayload);
     },
   },
   created() {
     const token = window.localStorage.getItem("token");
     if (token) {
-      const decoded = VueJwtDecode.decode(token);
+      const decoded = this.decodeToken(token);
       const store = useMemberStore();
       store.setDecodedToken(decoded);
       store.isAuthenticated = true;
@@ -148,10 +171,9 @@ export default {
 };
 </script>
 
-
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap");
-@import url(https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css);
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css");
 
 @font-face {
   font-family: "yg-jalnan";
@@ -500,6 +522,9 @@ body.sticky header div.head_logo {
   outline: none;
   font-size: 16px;
 }
+img {
+  margin-right: 10px;
+}
 
 .search_box div.search_keyword {
   flex: 2;
@@ -665,7 +690,7 @@ div#wh_fav_area div.area a:hover {
     margin-bottom: 24px;
   }
   div.head_logo img {
-    width: 250px;
+    width: 280px;
   }
 
   .search_box div.ln {

@@ -6,9 +6,7 @@
         <div offset="100px" class="signup-contents">
           <i :class="`signup-progress-icon step${currentStep}`"></i>
           <div v-if="currentStep === 1" class="signup-agreement-wrapper">
-            <h3 class="signup-agreement-info">
-              캠핑온탑 서비스 이용약관 동의
-            </h3>
+            <h3 class="signup-agreement-info">캠핑온탑 서비스 이용약관 동의</h3>
             <div id="signup-contents">
               <div class="all-agreement-wrapper">
                 <span @click="allAgree" class="all-agreement-span">
@@ -158,7 +156,7 @@
 import axios from "axios";
 
 export default {
-  name: "SignupPage",
+  name: "SellerSignupPage",
   data() {
     return {
       currentStep: 1,

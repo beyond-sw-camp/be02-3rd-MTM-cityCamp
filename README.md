@@ -25,7 +25,7 @@
 
 # 🖥️ System Architecture
 
-[campingOnTop System Architecture](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/ffbd64e0-c261-4e11-990f-ceb24f9a56b6")
+[campingOnTop System Architecture](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/ffbd64e0-c261-4e11-990f-ceb24f9a56b6)
 
 <br>
 <br>
