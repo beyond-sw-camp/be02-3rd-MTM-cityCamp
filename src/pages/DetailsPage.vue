@@ -122,11 +122,12 @@
               >장기숙박규정 취소</span
             >
           </li>
-
-          <span class="cart_right" @click="likesHouse()"> ❤️좋아요 </span>
-
+        
+          <span class="cart_right" @click="likesHouse()"> ❤️ 좋아요 </span>
+          <span class="cart_right"> ❤️ {{ houseDetails.likeCnt }} </span>
+          <div class="cart_date_1">
           <div class="cart_date">
-            <label for="checkInDate">체크인 날짜: </label>
+            <label for="checkInDate" style="padding-left:18px">체크인 날짜: </label>
             <input
               type="date"
               id="checkInDate"
@@ -143,8 +144,11 @@
               v-model="checkOutDate"
             />
           </div>
-          <span class="cart_right" @click="addHouseToCart()"> 🛒장바구니 </span>
+        
+          <span class="cart_right1" @click="addHouseToCart()"> 🛒 장바구니 </span>
+        </div>
         </ul>
+        
         <ConfirmDialogComponent
           v-if="showCartConfirmDialog"
           :isVisible="showCartConfirmDialog"
@@ -647,31 +651,54 @@ td {
 
 .cart_date {
   display: block; /* 블록 레벨 요소로 표시 */
-  text-align: center; /* 텍스트 가운데 정렬 */
-  margin: 10px 0; /* 상하 마진 추가 */
-  padding-top: 15px; /* 패딩 추가 */
+  text-align: center; /* 텍스트 가운데 정렬 *//* 상하 마진 추가 */ /* 패딩 추가 */
   color: black; /* 글자 색상 설정 */
+  padding:5px;
   font-size: 20px; /* 글자 크기 설정 */
   cursor: pointer; /* 마우스 오버 시 커서 변경 */
   border: none; /* 테두리 제거 */
-}
 
+}
+.cart_date_1 {
+  float: right;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 20px;
+  margin-right: 0px;
+  border-radius: 10px
+}
 .checkDate {
   margin-left: 15px;
 }
 
 .cart_right {
-  display: block; /* 블록 레벨 요소로 표시 */
-  text-align: center; /* 텍스트 가운데 정렬 */
-  margin: 20px 0; /* 상하 마진 추가 */
-  padding: 15px 0; /* 패딩 추가 */
-  background-color: #ff6b6b; /* 배경 색상 설정 */
-  color: white; /* 글자 색상 설정 */
-  font-size: 20px; /* 글자 크기 설정 */
-  cursor: pointer; /* 마우스 오버 시 커서 변경 */
-  border: none; /* 테두리 제거 */
+  display: block;
+  text-align: center;
+  margin: 20px 10px 0 0;
+  padding: 15px;
+  background-color: #ec1818;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  float: left; /* 오른쪽으로 붙이기 */
 }
-/* 가격과 단위를 담은 컨테이너를 오른쪽으로 정렬 */
+.cart_right1 {
+  display: block;
+  text-align: center;
+  background-color: #ec1818;
+  padding: 15px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  float: right;
+  clear: both; 
+}
+
+
 .price-container.right {
   margin-left: auto;
   display: flex;

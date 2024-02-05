@@ -27,6 +27,32 @@
           </div>
         </div>
       </form>
+      <form name="frmSearch" @submit.prevent="searchHouse" id="frmSearchMain">
+        <input type="hidden" name="ks" value="1" />
+        <div class="search_box wh_shadow">
+          <div class="sc search_keyword ln">
+            <input
+              type="text"
+              placeholder="숙소 주소로 검색"
+              v-model="searchQuery2"
+              class="search_input text2"
+              name="query"
+              autocomplete="off"
+              id="search_field"
+            />
+          </div>
+
+          <div class="sc search_btn">
+            <button type="submit" class="btn rounded-circle" id="search_btn">
+              <img
+                src="@/assets/images/header/magnifying-glass-solid.svg"
+                alt="S"
+                width="12"
+              />
+            </button>
+          </div>
+        </div>
+      </form>
       <div id="wh_fav_area" class="wh_shadow">
         <h6>서울 인기지역</h6>
         <div class="row no-gutters">
@@ -251,6 +277,7 @@
                   <a :href="'details/' + house.id">{{ house.name }}</a>
                 </h5>
                 <h6 class="card-subtitle">{{ house.address }}</h6>
+                <h6 class="card-likeCnt">❤ {{ house.likeCnt }}</h6>
                 <div class="p_price">
                   <span class="price">{{ house.price }}원</span>
                   <span class="night">/1박당</span>
@@ -276,6 +303,7 @@ export default {
       houseList: [],
       swiper: null,
       searchQuery: "",
+      searchQuery2: "",
     };
   },
   computed: {
@@ -646,11 +674,15 @@ body.sticky header div.head_logo {
 }
 
 .search_box {
+  width:570px;
   height: 56px;
   border: 1px solid #e0e0e0;
   border-radius: 28px;
   margin: 10px 0 30px 0;
   display: flex;
+}
+#frmSearchMain {
+  display:inline-block;
 }
 .search_box div.sc {
   margin: 10px 0 10px 10px;
@@ -803,6 +835,10 @@ section#main_lists div.card div.card-body h5.card-title a {
 section#main_lists div.card div.card-body h6.card-subtitle {
   margin: 0 0 5px 0;
   color: #777;
+}
+section#main_lists div.card div.card-body h6.card-likeCnt {
+  margin: 0 0 5px 0;
+  color: red;
 }
 
 section#main_lists div.card div.p_images span.btn_fav {

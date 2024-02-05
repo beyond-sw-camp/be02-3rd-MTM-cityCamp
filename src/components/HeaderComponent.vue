@@ -69,9 +69,21 @@
                 <span>{{ decodedToken.nickname }}</span>
               </a>
               <!-- 직접 나열된 링크 -->
-              <a href="/likes" class="btn">좋아요</a>
-              <a href="/cart" class="btn">장바구니</a>
-              <a href="/login" @click.prevent="logout" class="btn">로그아웃</a>
+              <a href="/likes" class="btn"><img
+                  src="@/assets/images/header/heart-solid.svg"
+                  alt="사용자"
+                  width="21"
+                />좋아요</a>
+              <a href="/cart" class="btn"><img
+                  src="@/assets/images/header/bell-solid.svg"
+                  alt="사용자"
+                  width="21"
+                />장바구니</a>
+              <a href="/login" @click.prevent="logout" class="btn"><img
+                  src="@/assets/images/header/user-solid.svg"
+                  alt="사용자"
+                  width="21"
+                />로그아웃</a>
             </div>
           </div>
         </li>
@@ -87,7 +99,7 @@
           <img
             src="@/assets/images/home/logo.png"
             alt="Welcome home! Wehome"
-            width="111"
+           
           />
         </a>
       </div>
@@ -499,6 +511,9 @@ body.sticky header div.head_logo {
   outline: none;
   font-size: 16px;
 }
+img {
+  margin-right: 10px;
+}
 
 .search_box div.search_keyword {
   flex: 2;
@@ -664,7 +679,7 @@ div#wh_fav_area div.area a:hover {
     margin-bottom: 24px;
   }
   div.head_logo img {
-    width: 250px;
+    width: 280px;
   }
 
   .search_box div.ln {
