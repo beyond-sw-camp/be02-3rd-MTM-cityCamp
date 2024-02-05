@@ -1,6 +1,6 @@
 <template>
   <header>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <div class="navbar_menu" :class="{ open: isNavbarOpen }">
       <button class="btn" type="button" id="menu_close" @click="toggleNavbar">
         <svg
@@ -23,10 +23,10 @@
         <li class="nav-item">
           <a href="/cart" target="_blank">장바구니</a>
         </li>
-        <li class="nav-item"  v-if="isAuthenticated">
+        <li class="nav-item" v-if="isAuthenticated">
           <a target="_blank" @click="logout">로그아웃</a>
         </li>
-        <li class="nav-item"  v-if="!isAuthenticated">
+        <li class="nav-item" v-if="!isAuthenticated">
           <a target="_blank" href="/login">로그인</a>
         </li>
       </ul>
@@ -79,7 +79,9 @@
 
         <!-- 항상 표시되는 호스트되기 버튼 -->
         <li class="nav-item" v-if="isAuthenticated">
-          <a href="/houseRegister" class="nav-link wehomehost_btn btn">숙소 등록</a>
+          <a href="/houseRegister" class="nav-link wehomehost_btn btn"
+            >숙소 등록</a
+          >
         </li>
       </ul>
 
@@ -96,10 +98,9 @@
   </header>
 </template>
 
-
 <script>
 import { useMemberStore } from "/src/stores/useMemberStore";
-import VueJwtDecode from "vue-jwt-decode";
+//import VueJwtDecode from "vue-jwt-decode";
 
 export default {
   name: "HeaderComponents",
@@ -135,11 +136,23 @@ export default {
       this.isDropdownOpen = false;
       this.$router.push("/");
     },
+    decodeToken(token) {
+      const base64Url = token.split(".")[1];
+      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split("")
+          .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+          .join("")
+      );
+
+      return JSON.parse(jsonPayload);
+    },
   },
   created() {
     const token = window.localStorage.getItem("token");
     if (token) {
-      const decoded = VueJwtDecode.decode(token);
+      const decoded = this.decodeToken(token);
       const store = useMemberStore();
       store.setDecodedToken(decoded);
       store.isAuthenticated = true;
@@ -148,10 +161,9 @@ export default {
 };
 </script>
 
-
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap");
-@import url(https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css);
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css");
 
 @font-face {
   font-family: "yg-jalnan";

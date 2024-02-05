@@ -96,7 +96,7 @@
               <input
                 class="signup-email-input"
                 placeholder="성명"
-                @input="onInput"
+                v-model="name"
                 type="text"
                 id="name"
                 name="name"
@@ -106,7 +106,7 @@
               <input
                 class="signup-email-input"
                 placeholder="닉네임"
-                @input="onInput"
+                v-model="nickName"
                 type="text"
                 id="nickName"
                 name="nickName"
@@ -135,8 +135,7 @@
             <h6>
               다음 버튼을 누르면 인증 메일이 발송되고 있어 <br />
               약간의 지연 시간이 발생할 수 있습니다. <br />
-              이메일 인증을 완료해야 <br />
-              캠핑온탑의 모든 서비스를 이용할 수 있습니다.
+              이메일 인증을 완료해야 모든 서비스를 이용할 수 있습니다.
             </h6>
             <button
               @click="submitRegistration"
@@ -154,24 +153,9 @@
 
 <script>
 import axios from "axios";
-import { reactive } from "vue";
-
 
 export default {
   name: "SignupPage",
-  setUp() {
-    const state = reactive({
-      name: "",
-      nickName: "",
-    });
-
-    const onInput = ({ target: { value } }) => {
-      state.name = value;
-      state.nickName = value;
-    };
-
-    return state, onInput;
-  },
   data() {
     return {
       currentStep: 1,
@@ -179,6 +163,8 @@ export default {
       email: "",
       password: "",
       passwordCheck: "",
+      name: "",
+      nickName: "",
       gender: "",
       phoneNum: "",
       agreements: [
@@ -280,6 +266,12 @@ export default {
       } catch (error) {
         console.error("회원가입 에러:", error);
       }
+    },
+    changeName(e) {
+      this.name = e.target.value;
+    },
+    changeNickName(e) {
+      this.nickName = e.target.value;
     },
   },
 };

@@ -27,6 +27,7 @@
           </div>
         </div>
       </form>
+      <!--
       <div id="wh_fav_area" class="wh_shadow">
         <h6>서울 인기지역</h6>
         <div class="row no-gutters">
@@ -145,6 +146,8 @@
           </div>
         </div>
       </div>
+      -->
+
     </section>
 
     <main class="mainClass">
