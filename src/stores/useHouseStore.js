@@ -1,19 +1,46 @@
 import { defineStore } from "pinia";
-import axios from 'axios';
+import axios from "axios";
 
 const backend = "http://13.125.229.218:8080";
 
 export const useHouseStore = defineStore("house", {
-  state: () => ({ houseList: [], houseDetails: null }),
+  state: () => ({
+    houseList: [],
+    houseDetails: null,
+    currentPage: 1,
+    totalPages: 1,
+  }),
   actions: {
     async getHouseList(page, size) {
-      let response = await axios.get(
-        backend + "/house/list?page=" + page + "&size=" + size
-      );
-      this.houseList = response.data;
-      console.log(response);
+      try {
+        let response = await axios.get(
+          backend + "/house/list?page=" + page + "&size=" + size
+        );
 
-      return response.data;
+        console.log("Total items in response:", response.data.length);
+
+        const totalCountHeader = response.headers["x-total-count"];
+        this.totalPages = totalCountHeader
+          ? Math.ceil(totalCountHeader / size)
+          : 1;
+
+        if (page > this.totalPages) {
+          page = this.totalPages;
+          this.currentPage = page;
+        } else {
+          this.currentPage = page;
+        }
+
+        this.houseList = response.data;
+
+        console.log("Current page:", this.currentPage);
+        console.log("Total pages:", this.totalPages);
+        console.log(response);
+
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
     },
     async getHouseDetails(id) {
       try {
@@ -27,10 +54,16 @@ export const useHouseStore = defineStore("house", {
     async getHouseListByName(page, size, name) {
       try {
         let response = await axios.get(
-          backend + "/house/find/name?page=" + page + "&size=" + size + "&name=" + name
+          backend +
+            "/house/find/name?page=" +
+            page +
+            "&size=" +
+            size +
+            "&name=" +
+            name
         );
         this.houseList = response.data;
-        
+
         console.log(response);
         return response.data;
       } catch (error) {

@@ -13,11 +13,11 @@
             <tr>
               <td colspan="2">숙소 이미지</td>
               <td>숙소 이름</td>
-              <td>숙소 소개</td>
+              <td>숙소 주소</td>
               <td>예상 결제 비용</td>
             </tr>
           </thead>
-          <tbody v-if="likesStore.likesList">
+          <tbody v-if="likesStore.likesList && likesStore.likesList.length > 0">
             <template
               v-for="(likesItem, index) in likesStore.likesList"
               :key="index"
@@ -36,22 +36,25 @@
                     {{ likesItem.name }}
                   </router-link>
                 </td>
-                <td>{{ likesItem.content }}</td>
+                <td>{{ likesItem.address }}</td>
                 <td>{{ likesItem.price.toLocaleString() }}원</td>
               </tr>
             </template>
           </tbody>
-          <template v-else>
+          <tbody v-else>
             <tr>
-              <td colspan="6" v-if="likesStore.likesList">
-                좋아요 목록에 숙소가 없습니다.
+              <td colspan="5">
+                {{
+                  likesStore.likesList
+                    ? "좋아요 목록에 숙소가 없습니다."
+                    : "Loading..."
+                }}
               </td>
-              <td colspan="6" v-else>Loading...</td>
             </tr>
             <tr>
-              <td colspan="6"><a href="/">숙소 찾아보기</a></td>
+              <td colspan="5"><a href="/">숙소 찾아보기</a></td>
             </tr>
-          </template>
+          </tbody>
         </table>
       </section>
     </main>
@@ -134,7 +137,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
   padding: 0 20px; /* Adjusted left and right padding */
 }
 .cart {

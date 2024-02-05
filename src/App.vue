@@ -40,5 +40,8 @@ a {
 
 .page-content {
   padding-top: 160px;
+  padding-bottom: 100px;
 }
+
+
 </style>
