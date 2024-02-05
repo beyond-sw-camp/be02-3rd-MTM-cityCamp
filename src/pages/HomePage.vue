@@ -7,7 +7,7 @@
           <div class="sc search_keyword ln">
             <input
               type="text"
-              placeholder="숙소 번호/이름, 장소 검색"
+              placeholder="숙소 이름으로 검색"
               v-model="searchQuery"
               class="search_input text2"
               name="query"
@@ -27,6 +27,19 @@
           </div>
         </div>
       </form>
+<!--
+      <div class="dropdown">
+        <button class="dropbtn">
+          <span class="dropbtn_icon"></span>
+          가격순으로 조회
+        </button>
+        <div class="dropdown-content">
+          <a href="#">profile</a>
+          <a href="#">write a post</a>
+          <a href="#">settings</a>
+        </div>
+      </div>
+-->
       <!--
       <div id="wh_fav_area" class="wh_shadow">
         <h6>서울 인기지역</h6>
@@ -147,14 +160,13 @@
         </div>
       </div>
       -->
-
     </section>
 
     <main class="mainClass">
-      <!--
       <section id="category">
         <div class="swiper-container category_slide">
           <ul class="swiper-wrapper">
+            <!--
             <li
               class="swiper-slide"
               data-type="subway"
@@ -166,6 +178,8 @@
               />
               <h6>역세권</h6>
             </li>
+            -->
+            <!--
             <li
               class="swiper-slide"
               data-type="subway"
@@ -177,6 +191,7 @@
               />
               <h6>내 주변</h6>
             </li>
+            -->
             <li
               class="swiper-slide"
               data-type="budget"
@@ -199,6 +214,7 @@
               />
               <h6>높은 가격순</h6>
             </li>
+            <!--
             <li
               class="swiper-slide"
               data-type="bbq"
@@ -207,10 +223,11 @@
               <img src="@/assets/images/home/fire-solid.svg" width="24" />
               <h6>바베큐</h6>
             </li>
+            -->
           </ul>
         </div>
       </section>
-      -->
+
       <section id="main_lists" class="container">
         <div class="row">
           <div
@@ -457,7 +474,6 @@ export default {
   z-index: 99;
 }
 
-
 element.style {
   transition-duration: 0ms;
   transform: translate3d(-4318px, 0px, 0px);
@@ -564,36 +580,55 @@ body {
   box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-toggle.btn:focus {
-  outline: none;
-  box-shadow: none;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
-.dropdown-menu {
-  box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.1);
-  border: 0;
+
+.dropbtn_icon {
+  font-family: "Material Icons";
 }
-.dropdown-toggle::after {
-  flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
-  margin-left: auto;
-  content: "";
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-size: 1rem;
-  transition: transform 0.2s ease-in-out;
-  border: 0;
-  vertical-align: middle;
+.dropbtn {
+  border: 1px solid rgb(37, 37, 37);
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  font-weight: 400;
+  color: rgb(37, 37, 37);
+  padding: 12px;
+  width: 200px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1; /*다른 요소들보다 앞에 배치*/
+  font-weight: 400;
+  background-color: #f9f9f9;
+  min-width: 200px;
+}
+
+.dropdown-content a {
+  display: block;
+  text-decoration: none;
+  color: rgb(37, 37, 37);
+  font-size: 12px;
+  padding: 12px 20px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ececec;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 *,
 ::after,
 ::before {
   box-sizing: border-box;
-}
-
-.dropdown-toggle.right_arrow::after {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 
 .modal-open {
