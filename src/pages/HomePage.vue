@@ -674,7 +674,7 @@ body.sticky header div.head_logo {
 }
 
 .search_box {
-  width:570px;
+  width:577px;
   height: 56px;
   border: 1px solid #e0e0e0;
   border-radius: 28px;
