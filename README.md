@@ -19,6 +19,11 @@
 
 <br>
 
+## System Architecture
+<img width="807" alt="campingOnTop FrontEnd Architecture" src="https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/ffbd64e0-c261-4e11-990f-ceb24f9a56b6">
+
+<br>
+
 ## 사용 기술 스택
 
 - **Vue.js** 
