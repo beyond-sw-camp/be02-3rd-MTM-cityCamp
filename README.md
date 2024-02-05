@@ -61,12 +61,18 @@
 
 ### [초기화면]
 - 
+https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/ae512d72-cfa4-401a-8df7-601327f54bb0
+
 
 <br>
 
 ### [회원가입]
 -
+https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/65f85f01-0e6a-43b8-a27b-49cbd3f9eba8
+<br>
 
+## [이메일 인증]
+https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/24a5da24-cf69-443c-a2c8-c16780a6b2ea
 
 
 <br>
@@ -75,13 +81,14 @@
 
 ### [로그인]
 
-
+https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/4b381e46-1881-4b59-bdb7-93753d71d22d
 
 
 <br>
 
 ### [로그아웃]
 
+https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/d3e73310-371c-4889-b145-abc0bbfe6d5e
 
 
 <br>
@@ -91,6 +98,7 @@
 
 ### [검색]
 
+https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/0dcf0d00-5cda-436d-853c-9f164e224bdc
 
 
 <br>
@@ -99,11 +107,16 @@
 
 #### 3. 좋아요
 
+https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/cafed9da-febd-4957-af76-aba61b30bea1
 
 <br>
 
 
 ### [장바구니]
+
+https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/2467ee53-3014-49b4-8c15-7d527b0e3c55
+
+
 
 #### 상품 등록
 
