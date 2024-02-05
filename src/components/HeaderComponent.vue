@@ -1,5 +1,6 @@
 <template>
   <header>
+    <meta charset="UTF-8">
     <div class="navbar_menu" :class="{ open: isNavbarOpen }">
       <button class="btn" type="button" id="menu_close" @click="toggleNavbar">
         <svg
