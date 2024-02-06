@@ -3,7 +3,7 @@
 ![캠핑온탑 로고](https://github.com/Tesssssssssy/HanwhaBC-be02-campingOnTop-config/assets/105422037/177289fc-5e89-4907-aea1-c5eb453c4059)
 ![캠핑온탑-001](https://github.com/beyond-sw-camp/be02-2nd-MTM-cityCamp/assets/105422037/90d4ac16-a769-498b-912a-7ca4265230ad)
 
-- 배포 URL :
+- 배포 URL : [campingOnTop](http://www.campingontop.kro.kr)
 
 <br>
 <br>
@@ -41,16 +41,23 @@
 	<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
   <img src="https://img.shields.io/badge/vuejs-%2335495e.svg?style=flat&logo=vuedotjs&logoColor=%234FC08D" />
 
+  <br>
+
   <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jQuery&logoColor=white" />
   <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=Bootstrap&logoColor=white" />
+
+  <br>
 
   <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=SpringBoot&logoColor=white" />
   <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Conda-Forge&logoColor=white" />
 
+  <br>
+
   <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
 
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
+  <br>
 
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
   <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=Ubuntu&logoColor=white"/>
   <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>
 
