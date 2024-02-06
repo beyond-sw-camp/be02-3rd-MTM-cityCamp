@@ -131,28 +131,35 @@ export const useHouseStore = defineStore("house", {
     async createHouse(postCreateHouseDtoReq) {
       try {
         const formData = new FormData();
-
-        formData.append("postCreateHouseDtoReq", JSON.stringify(postCreateHouseDtoReq));
-
-        postCreateHouseDtoReq.uploadFiles.forEach((file) => {
-          formData.append("uploadFiles[]", file);
+    
+        // Append JSON data as a blob
+        const jsonBlob = new Blob([JSON.stringify(postCreateHouseDtoReq)], {
+          type: 'application/json',
         });
-
-        const token = localStorage.getItem("token");
-
+        formData.append('postCreateHouseDtoReq', jsonBlob);
+    
+        // Append files
+        postCreateHouseDtoReq.uploadFiles.forEach((file) => {
+          formData.append('uploadFiles', file);
+        });
+    
+        const token = localStorage.getItem('token');
+    
         const headers = {
           Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data', // Set content type to multipart/form-data
         };
-
-        const response = await axios.post(backend + "/house/create", formData, {
+    
+        const response = await axios.post(backend + '/house/create', formData, {
           headers,
         });
-
+    
         console.log(response.data);
         return response.data;
       } catch (error) {
         console.error(error);
       }
     },
+    
   },
 });
