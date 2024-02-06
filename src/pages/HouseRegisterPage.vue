@@ -1,145 +1,16 @@
 <template>
   <div class="page-content">
     <main class="newadd center">
-      <h1>숙소 등록하기</h1>
+      <h1>숙소 등록</h1>
       <div id="main">
-        <form name="frmAdd" method="post" action="/rooms/process_add">
-          <ul class="type" id="home_type">
-            <input
-              type="hidden"
-              name="home_type_value"
-              id="home_type_value"
-              value=""
-            />
-            <li class="title">숙소 형태</li>
-
-            <li class="type">
-              <a href="#" data-type="1"> 옥탑 </a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="2"> 주택 </a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="24"> 민박 </a>
-            </li>
-
-            <li>
-              <div class="selectbox_arr big">
-                <span class="op_down"
-                  ><span class="glyphicon glyphicon-chevron-down"></span
-                ></span>
-                <select
-                  name="home_type"
-                  class="select_normal"
-                  id="home_type_sel"
-                >
-                  <option value="">기타</option>
-                  <option value="14">펜션</option>
-                  <option value="5">빌라</option>
-                  <option value="15">콘도</option>
-                  <option value="20">템플스테이</option>
-                  <option value="23">기타</option>
-                </select>
-              </div>
-            </li>
-          </ul>
-
-          <ul class="type" id="room_type">
-            <input
-              type="hidden"
-              name="room_type_value"
-              id="room_type_value"
-              value=""
-            />
-            <li class="title">객실종류</li>
-            <li class="type">
-              <a href="#" data-type="Entire home/apt"> 집/아파트 전체 </a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="Private room"> 전용실 </a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="Shared room"> 다인실 </a>
-            </li>
-          </ul>
-
-          <ul class="type circle" id="accommodates">
-            <input
-              type="hidden"
-              name="accommodates_value"
-              id="accommodates_value"
-              value="2"
-            />
-            <li class="title">숙박 인원</li>
-            <li class="type">
-              <a href="#" data-type="1">1</a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="2">2</a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="3">3</a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="4">4</a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="5">5</a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="6">6</a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="7">7</a>
-            </li>
-            <li class="type">
-              <a href="#" data-type="8">8</a>
-            </li>
-
-            <li>
-              <div class="selectbox_arr big">
-                <span class="op_down"
-                  ><span class="glyphicon glyphicon-chevron-down"></span
-                ></span>
-                <select
-                  name="accommodates"
-                  class="select_normal"
-                  id="accommodates_sel"
-                >
-                  <option value="">기타</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                  <option value="22">22</option>
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                  <option value="28">28</option>
-                  <option value="29">29</option>
-                  <option value="30">30+</option>
-                </select>
-              </div>
-            </li>
-          </ul>
+        <form @submit.prevent="submitForm" enctype="multipart/form-data">
           <div class="input-group">
-            <label for="name">숙소 이름 : </label>
+            <label for="name">이름: </label>
             <input class="input-group-type" type="text" id="name" name="name" />
           </div>
           <br />
           <div class="input-group">
-            <label for="content">숙소 소개 : </label>
+            <label for="content">소개: </label>
             <input
               class="input-group-type"
               type="text"
@@ -149,7 +20,7 @@
           </div>
           <br />
           <div class="input-group">
-            <label for="price">숙소 가격 : </label>
+            <label for="price">이용 가격: </label>
             <input
               class="input-group-type"
               type="number"
@@ -159,7 +30,7 @@
           </div>
           <br />
           <div class="input-group">
-            <label for="address">숙소 주소 : </label><br />
+            <label for="address">주소: </label><br />
             <input
               class="input-group-type"
               type="text"
@@ -169,26 +40,26 @@
           </div>
           <br />
           <div class="input-group">
-            <label for="latitude">숙소 위도 : </label><br />
-            <input
-              class="input-group-type"
-              type="number"
-              id="latitude"
-              name="latitude"
-            />
+            <label for="latitude">위도: </label><br />
+            <input type="number" id="latitude" name="latitude" />
           </div>
           <div class="input-group">
-            <label id="longitude" for="longitude">숙소 경도 : </label><br />
-            <input
-              class="input-group-type"
-              type="number"
-              id="longitude"
-              name="longitude"
-            />
+            <label id="longitude" for="longitude">경도: </label><br />
+            <input type="number" id="longitude" name="longitude" />
           </div>
           <div class="input-group">
-            <label id="hasImeage" for="hasImeage">숙소 이미지 : </label>
-            <input type="file" id="hasImeage" name="hasImage" /><br />
+            <label for="maxUser">최대 인원: </label>
+            <input class="input-group-type" type="text" id="name" name="name" />
+          </div>
+          <div class="input-group">
+            <label id="uploadFile" for="hasImage">이미지 : </label>
+            <input
+              type="file"
+              id="hasImage"
+              name="uploadFiles"
+              @change="handleFileUpload"
+              multiple
+            /><br />
           </div>
           <br class="checkbox" />
           <h2 id="option">옵션</h2>
@@ -220,86 +91,61 @@
           </div>
 
           <div class="btns">
-            <a href="#" id="next_btn" class="btn btn_red continue_btn">계속</a>
+            <button
+              type="submit"
+              id="next_btn"
+              class="btn btn_red continue_btn"
+            >
+              등록
+            </button>
           </div>
         </form>
       </div>
     </main>
-
-    <nav>
-      <div class="container">
-        <div class="row">
-          <a href="#" class="col on">
-            <div class="button_wrap">
-              <img
-                src="/assets/images/home/nav/campground-solid.svg"
-                alt="Home"
-                class="over"
-                width="100%"
-              />
-            </div>
-            <h2>캠핑온탑</h2>
-          </a>
-          <a href="#" class="col">
-            <div class="button_wrap">
-              <img
-                src="/assets/images/home/nav/btn_book.png"
-                alt="Booking"
-                class="off"
-                width="100%"
-              />
-              <img
-                src="/assets/images/home/nav/btn_book_h.png"
-                alt="Booking"
-                class="over"
-                width="100%"
-              />
-            </div>
-            <h2>예약</h2>
-          </a>
-          <a href="#" class="col">
-            <div class="button_wrap">
-              <img
-                src="/assets/images/home/nav/btn_msg.png"
-                alt="Message"
-                class="off"
-                width="100%"
-              />
-              <img
-                src="/assets/images/home/nav/btn_msg_h.png"
-                alt="Message"
-                class="over"
-                width="100%"
-              />
-            </div>
-            <h2>메시지</h2>
-          </a>
-          <a href="#" class="col">
-            <div class="button_wrap">
-              <img
-                src="/assets/images/home/nav/btn_profile.png"
-                alt="Profile"
-                class="off"
-                width="100%"
-              />
-              <img
-                src="/assets/images/home/nav/btn_profile_h.png"
-                alt="Profile"
-                class="over"
-                width="100%"
-              />
-            </div>
-            <h2>로그인</h2>
-          </a>
-        </div>
-      </div>
-    </nav>
   </div>
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { useHouseStore } from "/src/stores/useHouseStore";
+
 export default {
-  name: "ProductRegistrationPage",
+  name: "HouseRegisterPage",
+  data() {
+    return {
+      formData: {
+        name: "",
+        content: "",
+        price: 0,
+        address: "",
+        latitude: 0,
+        longitude: 0,
+        maxUser: 0,
+        hasAirConditioner: false,
+        hasWashingMachine: false,
+        hasBed: false,
+        hasHeater: false,
+        uploadFiles: [],
+      },
+    };
+  },
+  computed: {
+    ...mapStores(useHouseStore),
+  },
+  methods: {
+    async submitForm() {
+      try {
+        const response = await this.houseStore.createHouse(this.formData);
+
+        console.log("House created successfully:", response);
+      } catch (error) {
+        console.error("Error creating house:", error);
+      }
+    },
+    handleFileUpload(event) {
+      this.formData.uploadFiles = Array.from(event.target.files);
+    },
+  },
 };
 </script>
 
