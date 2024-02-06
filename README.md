@@ -27,6 +27,9 @@
 <br>
 
 # ✒️ 사용 기술 스택
+<details>
+<summary><b style="font-size: 18px;">기술 설명</b></summary>
+
 ### Vue.js
 - 컴포넌트 기반의 모듈화로 코드를 재사용하기에 유지보수를 하기 간편하다. 
 - 데이터 바인딩을 통해 모델과 뷰를 손쉽게 동기화할 수 있으며, 가상 DOM을 활용하여 실제 DOM 조작을 최소화하여 성능을 향상시킨다.
@@ -59,7 +62,7 @@
  AWS EC2 Ubuntu 20.04 서버에 배포했다. 
 - Spring 서버와 마찬가지로 규칙 설정 등을 통해 Spring 서버만 접속할 수 있도록 허용했고 <br>
  Spring refresh 등을 통해 수정된 환경 변수 등의 정보를 Spring 서버에 제공한다. 
-
+</details>
 <br>
 <br>
 
