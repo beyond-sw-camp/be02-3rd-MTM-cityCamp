@@ -70,5 +70,75 @@ export const useHouseStore = defineStore("house", {
         console.error("해당 이름의 숙소들이 존재하지 않습니다");
       }
     },
+    async getHouseListByAddr(page, size, addr) {
+      try {
+        let response = await axios.get(
+          backend +
+            "/house/find/address?page=" +
+            page +
+            "&size=" +
+            size +
+            "&address=" +
+            addr
+        );
+        this.houseList = response.data;
+
+        console.log(response);
+        return response.data;
+      } catch (error) {
+        console.error("해당 이름의 숙소들이 존재하지 않습니다");
+      }
+    },
+    async getHouseListOrderByPriceDesc(page, size) {
+      try {
+        let response = await axios.get(
+          backend +
+            "/house/find/pricedesc?page=" +
+            page +
+            "&size=" +
+            size
+        );
+        this.houseList = response.data;
+
+        console.log(response);
+        return response.data;
+      } catch (error) {
+        console.error("해당 이름의 숙소들이 존재하지 않습니다");
+      }
+    },
+    async getHouseListOrderByPriceAsc(page, size) {
+      try {
+        let response = await axios.get(
+          backend +
+            "/house/find/priceasc?page=" +
+            page +
+            "&size=" +
+            size
+        );
+        this.houseList = response.data;
+
+        console.log(response);
+        return response.data;
+      } catch (error) {
+        console.error("해당 이름의 숙소들이 존재하지 않습니다");
+      }
+    },
+    async getHouseListOrderByLikeCntDesc(page, size) {
+      try {
+        let response = await axios.get(
+          backend +
+            "/house/find/likeCntDesc?page=" +
+            page +
+            "&size=" +
+            size
+        );
+        this.houseList = response.data;
+
+        console.log(response);
+        return response.data;
+      } catch (error) {
+        console.error("해당 이름의 숙소들이 존재하지 않습니다");
+      }
+    },
   },
 });
