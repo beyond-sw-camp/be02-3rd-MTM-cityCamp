@@ -6,11 +6,6 @@
 <br>
 <br>
 
-# 배포 URL : [campingOnTop](http://www.campingontop.kro.kr)
-
-<br>
-<br>
-
 # 💪 팀원 구성
 
 <div align="left">
@@ -24,46 +19,53 @@
 <br>
 <br>
 
-# ✒️ 사용 기술 스택
+
+# 배포 URL
+- [campingOnTop](http://www.campingontop.kro.kr)
+
 <br>
-Vue.js
-<details>
- <summary><b>설명</b></summary>
-  - 컴포넌트 기반의 모듈화로 코드를 재사용하며 유지보수가 간편해집니다. <br>
-  - 데이터 바인딩을 통해 모델과 뷰를 손쉽게 동기화할 수 있으며, 가상 DOM을 활용하여 실제 DOM 조작을 최소화하여 성능을 향상시킵니다.
-  </details>
- JWT
-<details>
- <summary><b>설명</b></summary>
-- 페이로드에 필요한 사용자 정의 데이터를 포함할 수 있어, 다양한 환경에서 다양한 요구사항을 충족합니다. <br>
- - JWT는 표준 규격을 따르고 있어, 이를 지원하는 다양한 라이브러리와 플랫폼에서 쉽게 사용할 수 있습니다. 이는 서비스 간의 상호 운용성을 향상시킵니다.<br>
- - JWT는 JSON 형식을 사용하며, 정보를 포함하는 데 필요한 최소한의 필드만을 가지고 있습니다. 이는 토큰 크기를 작게 유지하면서 필요한 정보를 전송하는 데 효과적입니다.
-  </details>
- MySQL 8.0.32
-<details>
- <summary><b>설명</b></summary>
- - Amazon RDS 서버에 MySQL 8.0.32 버전을 배포하였습니다.
- <br>
-  - Amazon RDS를 활용하여 데이터베이스를 관리하며, 안정적인 운영 환경을 제공합니다.
+<br>
 
-   </details>
- Spring 서버 배포(AWS EC2)
-<details>
- <summary><b>설명</b></summary>
-  - Nginx의 설정 파일을 수정하여 Spring Config 서버로의 요청을 프록시하도록 했습니다.<br>
-  - 이를 통해 클라이언트는 Nginx를 통해 Spring Config 서버에 접속할 수 있습니다. <br>
-  또한 도메인을 구성하여 클라이언트가 EC2에 쉽게 접속할 수 있도록 하였습니다. <br>
-   <a href="http://www.campingontop.kro.kr/" target="_blank">http://www.campingontop.kro.kr/</a>
-</details>
+# ✒️ 사용 기술 스택
+### Vue.js
+- 컴포넌트 기반의 모듈화로 코드를 재사용하기에 유지보수를 하기 간편하다. 
+- 데이터 바인딩을 통해 모델과 뷰를 손쉽게 동기화할 수 있으며, 가상 DOM을 활용하여 실제 DOM 조작을 최소화하여 성능을 향상시킨다.
+- 기존 html, js를 사용할 떄와 달리 Store, Pinia 등을 이용해 불필요한 데이터 조회를 줄여 결과적으로 서버에 부담을 줄일 수 있다.
+- <b>Pinia, Store</b>
+  - Vue.js에서 제공하는 Pinia, Store 기능을 활용해 최대한 동적으로 페이지, 데이터를 제공할 수 있도록 구현했다. 
+  - 기존에 HTML, JS에서 페이지 이동 등을 통해 데이터 제공, 페이지 접근을 할 수 있었지만 <br>
+   Pinia, Store를 활용해 가상 DOM 등을 이용했기 때문에 유저가 빠르고 쾌적하게 서비스를 이용할 수 있도록 구현했다. 
 
- Spring Config 서버 배포(AWS EC2)
-<details>
- <summary><b>설명</b></summary>
-- Spring Config 서버를 EC2 인스턴스에 배포했습니다.
+### JWT
+- 페이로드에 필요한 사용자 정의 데이터를 포함할 수 있어, 다양한 환경에서 다양한 요구사항을 충족한다. <br>
+ 특히 campingOnTop은 id, nickname, email 등을 token에 포함하고 memberStore에 저장하는데 사용된다. 
+- JWT는 표준 규격을 따르고 있어, 이를 지원하는 다양한 라이브러리와 플랫폼에서 쉽게 사용할 수 있다. 이는 서비스 간의 상호 운용성을 향상시킨다.
+- JWT는 JSON 형식을 사용하며, 정보를 포함하는 데 필요한 최소한의 필드만을 가지고 있다. 
+   이는 토큰 크기를 작게 유지하면서 필요한 정보를 전송하는 데 효과적이다.
 
-</details>
-<br />
-<div align="center">
+### MySQL 8.0.32
+- 기존에 가상 머신 CentOS8의 mysql-server를 사용하던 중 배포, 성능 등을 고려한 결과 DB 변경을 결정했다. <br>
+ -> Amazon RDS 서버에 MySQL 8.0.32 버전을 선택.
+- Amazon RDS를 활용하여 데이터베이스를 관리하며, 안정적인 운영 환경을 제공한다.
+- 인바운드, 아웃바운드 규칙 설정 등을 통해 안정적이고 빠른 데이터 쿼리 및 API 응답을 가능하게 한다.
+
+### Spring 서버 배포(AWS EC2 Ubuntu 20.04 LTS)
+- Spring Boot 프로젝트를 빌드한 후 실행 파일 jar 파일을 AWS EC2 Ubuntu 20.04 서버에 배포했다.
+- 인바운드, 아웃바운드 규칙 설정 등을 통해 특정 포트만 접속할 수 있도록 허용했고 <br>
+ 기본적으로 AWS에서 제공하는 보안, 성능을 최대한 활용할 수 있다. 
+
+### Spring Config 서버 배포(AWS EC2)
+- Private Git Repository에서 환경 변수등을 불러오는 Spring Config 서버를 <br>
+ AWS EC2 Ubuntu 20.04 서버에 배포했다. 
+- Spring 서버와 마찬가지로 규칙 설정 등을 통해 Spring 서버만 접속할 수 있도록 허용했고 <br>
+ Spring refresh 등을 통해 수정된 환경 변수 등의 정보를 Spring 서버에 제공한다. 
+
+<br>
+<br>
+
+
+# Badges
+<div align="left">
 	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
 	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
 	<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
@@ -92,9 +94,18 @@ Vue.js
   <br />
 </div>
 
+<br>
+<br>
+
 # 🖥️ System Architecture
 
 [campingOnTop System Architecture](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/a2298147-69fa-405e-9485-79b89b706371)
+
+<br>
+<br>
+
+# 📜 Front End 요구사항 명세서 (진행중)
+[campingOnTop Front 요구 사항 명세서](https://docs.google.com/spreadsheets/d/1M9KUdkTvYwlbRystq-_26WpynnnbtVQdG6v5hFsb93Y/edit#gid=1284096346)
 
 <br>
 <br>
