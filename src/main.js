@@ -1,3 +1,5 @@
+window.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import LoadScript from 'vue-plugin-load-script';
