@@ -176,8 +176,7 @@
           </div>
         </div>
       </div>
-      -->
-    </section>
+    --></section>
 
     <main class="mainClass">
       <section id="category">
@@ -236,10 +235,7 @@
               data-type="likes"
               @click="searchHouseOrderByLikeCntDesc()"
             >
-              <img
-                src="@/assets/images/home/thumbs-up-solid.svg"
-                width="32"
-              />
+              <img src="@/assets/images/home/thumbs-up-solid.svg" width="32" />
               <h6>인기 많은 순</h6>
             </li>
             <!--
