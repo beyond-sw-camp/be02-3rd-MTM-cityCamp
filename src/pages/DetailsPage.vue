@@ -3,7 +3,7 @@
     <main class="details center">
       <section>
         <div class="title">
-          <h1>{{ houseDetails.name }}</h1>
+          <h2>{{ houseDetails.name }}</h2>
         </div>
         <div class="card">
           <div class="swiper-container" style="height: 500px">
