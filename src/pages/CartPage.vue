@@ -3,7 +3,7 @@
     <main id="main">
       <section class="cart">
         <div class="cart__information">
-          <h1>장바구니</h1>
+          <h1 style="font-weight: bold">장바구니</h1>
           <h6>😅결제 기능은 추후 구현 예정입니다. (추가만 가능)</h6>
           <ul>
             <li>장바구니 상품은 최대 30일간 저장됩니다.</li>

@@ -176,7 +176,8 @@
           </div>
         </div>
       </div>
-    --></section>
+      -->
+    </section>
 
     <main class="mainClass">
       <section id="category">
@@ -235,7 +236,10 @@
               data-type="likes"
               @click="searchHouseOrderByLikeCntDesc()"
             >
-              <img src="@/assets/images/home/thumbs-up-solid.svg" width="32" />
+              <img
+                src="@/assets/images/home/thumbs-up-solid.svg"
+                width="28"
+              />
               <h6>인기 많은 순</h6>
             </li>
             <!--
@@ -959,7 +963,8 @@ section#main_lists div.card div.card-body {
   padding: 16px 0;
 }
 section#main_lists div.card div.card-body h5.card-title a {
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: bold;
   color: #1c1c1c;
 }
 section#main_lists div.card div.card-body h6.card-subtitle {
