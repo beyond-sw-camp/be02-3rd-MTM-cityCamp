@@ -2,8 +2,8 @@
   <div v-if="houseDetails" class="page-content">
     <main class="details center">
       <section>
-        <div class="title">
-          <h2>{{ houseDetails.name }}</h2>
+        <div class="titleName">
+          <h2 style="font-weight: bold">{{ houseDetails.name }}</h2>
         </div>
         <div class="card">
           <div class="swiper-container" style="height: 500px">
@@ -81,11 +81,11 @@
       </section>
 
       <section id="description" class="section up_border">
-        <h2 class="sul">설명</h2>
+        <h2 class="sul" style="font-weight: bold">설명</h2>
         <div class="sns_share">{{ houseDetails.content }}</div>
       </section>
       <section id="conditions" class="section2 up_border">
-        <h2>가격</h2>
+        <h2 style="font-weight: bold">가격</h2>
 
         <ul>
           <li>
@@ -97,7 +97,7 @@
           </li>
         </ul>
 
-        <h3 class="sang">상세정보</h3>
+        <h2 class="sang">상세정보</h2>
         <ul>
           <li>
             <span class="desc">체크인 시간(이후)</span>
@@ -122,33 +122,37 @@
               >장기숙박규정 취소</span
             >
           </li>
-        
+
           <span class="cart_right" @click="likesHouse()"> ❤️ 좋아요 </span>
           <span class="cart_right"> ❤️ {{ houseDetails.likeCnt }} </span>
           <div class="cart_date_1">
-          <div class="cart_date">
-            <label for="checkInDate" style="padding-left:18px">체크인 날짜: </label>
-            <input
-              type="date"
-              id="checkInDate"
-              class="checkDate"
-              v-model="checkInDate"
-            />
+            <div class="cart_date">
+              <label for="checkInDate" style="padding-left: 18px"
+                >체크인 날짜:
+              </label>
+              <input
+                type="date"
+                id="checkInDate"
+                class="checkDate"
+                v-model="checkInDate"
+              />
+            </div>
+            <div class="cart_date">
+              <label for="checkOutDate">체크아웃 날짜: </label>
+              <input
+                type="date"
+                id="checkOutDate"
+                class="checkDate"
+                v-model="checkOutDate"
+              />
+            </div>
+
+            <span class="cart_right1" @click="addHouseToCart()">
+              🛒 장바구니
+            </span>
           </div>
-          <div class="cart_date">
-            <label for="checkOutDate">체크아웃 날짜: </label>
-            <input
-              type="date"
-              id="checkOutDate"
-              class="checkDate"
-              v-model="checkOutDate"
-            />
-          </div>
-        
-          <span class="cart_right1" @click="addHouseToCart()"> 🛒 장바구니 </span>
-        </div>
         </ul>
-        
+
         <ConfirmDialogComponent
           v-if="showCartConfirmDialog"
           :isVisible="showCartConfirmDialog"
@@ -317,7 +321,6 @@ import { useLikesStore } from "/src/stores/useLikesStore";
 import { useCartStore } from "/src/stores/useCartStore";
 import ConfirmDialogComponent from "/src/components/ConfirmDialogComponent.vue";
 
-
 import Swiper from "swiper";
 
 export default {
@@ -485,6 +488,7 @@ export default {
 div.up_border,
 section.up_border {
   border-top: 1px solid #ccc;
+  padding-bottom: 30px;
 }
 div.image_desc {
   padding: 15px 24px;
@@ -508,6 +512,11 @@ div.image_desc img {
   margin: auto;
 }
 
+.titleName {
+  font-size: 30px;
+  font-weight:bolder
+}
+
 main {
   margin: 0 auto;
   width: 1200px;
@@ -524,7 +533,7 @@ main {
 }
 
 td {
-    width: 400px;
+  width: 400px;
 }
 
 .type_detail td {
@@ -601,13 +610,13 @@ td {
 }
 .section2 {
   border-top: 1px solid #e6e6e6; /* 상단에 테두리 추가 */
-  padding: 20px 0; /* 패딩 추가 */
+  padding: 30px 0; /* 패딩 추가 */
+  margin-bottom: 40px;
 }
 
 .section2 h2,
 .section2 h3 {
   color: #6200cd;
-  font-size: 24px; /* 제목의 글자 크기 설정 */ /* 제목의 글자 색상 설정 */
   margin-bottom: 20px; /* 제목 아래 마진 추가 */
 }
 
@@ -628,6 +637,7 @@ td {
 .section2 .desc {
   font-size: 16px; /* 설명의 글자 크기 설정 */
   color: #666; /* 설명의 글자 색상 설정 */
+  padding-bottom: 15px
 }
 
 .section2 .price,
@@ -651,13 +661,12 @@ td {
 
 .cart_date {
   display: block; /* 블록 레벨 요소로 표시 */
-  text-align: center; /* 텍스트 가운데 정렬 *//* 상하 마진 추가 */ /* 패딩 추가 */
+  text-align: center; /* 텍스트 가운데 정렬 */ /* 상하 마진 추가 */ /* 패딩 추가 */
   color: black; /* 글자 색상 설정 */
-  padding:5px;
+  padding: 5px;
   font-size: 20px; /* 글자 크기 설정 */
   cursor: pointer; /* 마우스 오버 시 커서 변경 */
   border: none; /* 테두리 제거 */
-
 }
 .cart_date_1 {
   float: right;
@@ -665,7 +674,7 @@ td {
   padding: 15px;
   margin: 20px;
   margin-right: 0px;
-  border-radius: 10px
+  border-radius: 10px;
 }
 .checkDate {
   margin-left: 15px;
@@ -695,9 +704,8 @@ td {
   border: none;
   border-radius: 15px;
   float: right;
-  clear: both; 
+  clear: both;
 }
-
 
 .price-container.right {
   margin-left: auto;
@@ -714,5 +722,6 @@ td {
 }
 h2 {
   color: #6200cd;
+  font-weight: bold
 }
 </style>
