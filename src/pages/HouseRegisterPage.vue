@@ -6,7 +6,13 @@
         <form @submit.prevent="submitForm" enctype="multipart/form-data">
           <div class="input-group">
             <label for="name">이름: </label>
-            <input class="input-group-type" type="text" id="name" name="name" />
+            <input
+              class="input-group-type"
+              type="text"
+              id="name"
+              name="name"
+              v-model="formData.name"
+            />
           </div>
           <br />
           <div class="input-group">
@@ -16,6 +22,7 @@
               type="text"
               id="content"
               name="content"
+              v-model="formData.content"
             />
           </div>
           <br />
@@ -26,6 +33,7 @@
               type="number"
               id="price"
               name="price"
+              v-model="formData.price"
             />
           </div>
           <br />
@@ -36,30 +44,47 @@
               type="text"
               id="address"
               name="address"
+              v-model="formData.address"
             />
           </div>
           <br />
           <div class="input-group">
             <label for="latitude">위도: </label><br />
-            <input type="number" id="latitude" name="latitude" />
+            <input
+              type="text"
+              id="latitude"
+              name="latitude"
+              v-model="formData.latitude"
+            />
           </div>
           <div class="input-group">
-            <label id="longitude" for="longitude">경도: </label><br />
-            <input type="number" id="longitude" name="longitude" />
+            <label for="longitude">경도: </label><br />
+            <input
+              type="text"
+              id="longitude"
+              name="longitude"
+              v-model="formData.longitude"
+            />
           </div>
           <div class="input-group">
             <label for="maxUser">최대 인원: </label>
-            <input class="input-group-type" type="text" id="name" name="name" />
+            <input
+              class="input-group-type"
+              type="number"
+              id="maxUser"
+              name="maxUser"
+              v-model="formData.maxUser"
+            />
           </div>
           <div class="input-group">
-            <label id="uploadFile" for="hasImage">이미지 : </label>
+            <label for="hasImage">이미지 : </label>
             <input
               type="file"
               id="hasImage"
               name="uploadFiles"
               @change="handleFileUpload"
               multiple
-            /><br />
+            />
           </div>
           <br class="checkbox" />
           <h2 id="option">옵션</h2>
@@ -70,7 +95,8 @@
                 type="checkbox"
                 id="hasAirConditioner"
                 name="hasAirConditioner"
-              /><br />
+                v-model="formData.hasAirConditioner"
+              />
             </div>
             <div>
               <label for="hasWashingMachine">세탁기 </label><br />
@@ -78,15 +104,26 @@
                 type="checkbox"
                 id="hasWashingMachine"
                 name="hasWashingMachine"
-              /><br />
+                v-model="formData.hasWashingMachine"
+              />
             </div>
             <div>
               <label for="hasBed">침대 </label><br />
-              <input type="checkbox" id="hasBed" name="hasBed" /><br />
+              <input
+                type="checkbox"
+                id="hasBed"
+                name="hasBed"
+                v-model="formData.hasBed"
+              />
             </div>
             <div>
               <label for="hasHeater">히터 </label><br />
-              <input type="checkbox" id="hasHeater" name="hasHeater" /><br />
+              <input
+                type="checkbox"
+                id="hasHeater"
+                name="hasHeater"
+                v-model="formData.hasHeater"
+              />
             </div>
           </div>
 
@@ -116,16 +153,15 @@ export default {
       formData: {
         name: "",
         content: "",
-        price: 0,
+        price: null,
         address: "",
-        latitude: 0,
-        longitude: 0,
-        maxUser: 0,
+        latitude: "",
+        longitude: "",
+        maxUser: null,
         hasAirConditioner: false,
         hasWashingMachine: false,
         hasBed: false,
         hasHeater: false,
-        uploadFiles: [],
       },
     };
   },
