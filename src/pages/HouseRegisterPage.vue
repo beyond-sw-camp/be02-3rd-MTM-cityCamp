@@ -1,18 +1,18 @@
 <template>
   <div class="page-content">
     <main class="newadd center">
-      <h1 class = "register_">숙소 등록</h1>
+      <div class="center">
+      <h1 class="newest">🏕️ 숙소 등록🏕️ </h1>
+      <h2 class="newest-content">캠핑온탑에서 방을 공유해서 수익도 올리고 <br>글로벌 친구도 사귀세요.
+      </h2>
+      
+     </div>
       <div id="main">
+
         <form @submit.prevent="submitForm" enctype="multipart/form-data">
           <div class="input-group">
             <label for="name">이름: </label>
-            <input
-              class="input-group-type"
-              type="text"
-              id="name"
-              name="name"
-              v-model="formData.name"
-            />
+            <input class="input-group-type" type="text" id="name" name="name"  v-model="formData.name"/>
           </div>
           <br />
           <div class="input-group">
@@ -44,62 +44,49 @@
               type="text"
               id="address"
               name="address"
+              placeholder=" 상세주소까지 기입해주세요"
               v-model="formData.address"
             />
           </div>
           <br />
           <div class="input-group">
             <label for="latitude">위도: </label><br />
-            <input
-              type="text"
-              id="latitude"
-              name="latitude"
-              v-model="formData.latitude"
-            />
+            <input type="text" id="latitude" name="latitude" v-model="formData.latitude"/>
           </div>
           <div class="input-group">
-            <label for="longitude">경도: </label><br />
-            <input
-              type="text"
-              id="longitude"
-              name="longitude"
-              v-model="formData.longitude"
-            />
+            <label id="longitude" for="longitude">경도: </label><br />
+            <input type="text" id="longitude" name="longitude" v-model="formData.longitude"/>
           </div>
           <div class="input-group">
             <label for="maxUser">최대 인원: </label>
-            <input
-              class="input-group-type"
-              type="number"
-              id="maxUser"
-              name="maxUser"
-              v-model="formData.maxUser"
-            />
+            <input class="input-group-type" type="text" id="name" name="name" v-model="formData.maxUser"/>
           </div>
           <div class="input-group">
-            <label for="hasImage">이미지 : </label>
+            <label id="uploadFile" for="hasImage"
+              >이미지 : &nbsp; &nbsp;
+            </label>
             <input
               type="file"
               id="hasImage"
               name="uploadFiles"
               @change="handleFileUpload"
               multiple
-            />
+            /><br />
           </div>
           <br class="checkbox" />
-          <h2 id="option">옵션</h2>
+          <h2 id="option" >옵션</h2>
           <div class="checkbox">
-            <div>
-              <label for="hasAirConditioner">에어컨 </label><br />
+            <div class="checkbox-option">
+              <label for="hasAirConditioner">에어컨 &nbsp;</label>
               <input
                 type="checkbox"
                 id="hasAirConditioner"
                 name="hasAirConditioner"
                 v-model="formData.hasAirConditioner"
-              />
+              /><br />
             </div>
-            <div>
-              <label for="hasWashingMachine">세탁기 </label><br />
+            <div class="checkbox-option">
+              <label for="hasWashingMachine">세탁기 &nbsp; </label>
               <input
                 type="checkbox"
                 id="hasWashingMachine"
@@ -107,23 +94,13 @@
                 v-model="formData.hasWashingMachine"
               />
             </div>
-            <div>
-              <label for="hasBed">침대 </label><br />
-              <input
-                type="checkbox"
-                id="hasBed"
-                name="hasBed"
-                v-model="formData.hasBed"
-              />
+            <div class="checkbox-option">
+              <label for="hasBed">침대 &nbsp;</label>
+              <input type="checkbox" id="hasBed" name="hasBed" v-model="formData.hasBed"/>
             </div>
-            <div>
-              <label for="hasHeater">히터 </label><br />
-              <input
-                type="checkbox"
-                id="hasHeater"
-                name="hasHeater"
-                v-model="formData.hasHeater"
-              />
+            <div class="checkbox-option">
+              <label for="hasHeater">히터 &nbsp;</label>
+              <input type="checkbox" id="hasHeater" name="hasHeater" v-model="formData.hasHeater"/>
             </div>
           </div>
 
@@ -145,7 +122,6 @@
 <script>
 import { mapStores } from "pinia";
 import { useHouseStore } from "/src/stores/useHouseStore";
-
 export default {
   name: "HouseRegisterPage",
   data() {
@@ -172,8 +148,11 @@ export default {
     async submitForm() {
       try {
         const response = await this.houseStore.createHouse(this.formData);
-
-        console.log("House created successfully:", response);
+        if (response) {
+          console.log("House created successfully:", response);
+          alert("숙소 등록 성공!");
+          this.$router.push("/details/" + response.id);
+        }
       } catch (error) {
         console.error("Error creating house:", error);
       }
@@ -186,278 +165,124 @@ export default {
 </script>
 
 <style scoped>
-main {
-  width: 100%;
-  display: block;
-  justify-content: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #555 ;
+  
+}
+
+body {
+  background-color: #f5f5f5;
+  font-size: 16px;
+  color: #333;
   padding-top: 50px;
 }
-#main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-body {
-  display: block;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
 
-form {
-  width: 1000px;
+/* 페이지 컨텐츠 스타일링 */
+.page-content {
+  display: flex;
+  justify-content: center;
   padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 5000px;
-}
-.register_ {
-  margin: 60px;
-}
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#product_Registration {
-  font-size: 2em;
-  color: #333;
-  text-align: center;
-  padding-bottom: 1em;
-}
-
-/* Custom CSS for checkbox */
-.product_Registration .checkbox-group {
-  display: block;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-/* Custom CSS for maxUser */
-.product_Registration #maxUser {
-  width: 50%;
-}
-
-.checkbox {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .checkbox div {
   margin-right: -100px;
 }
-
 .checkbox label,
 .checkbox input {
   display: inline-block;
 }
-
-input[type="text"],
-input[type="number"] {
-  width: 700px;
-}
-
-.input-group {
-  margin-bottom: 20px;
-  width: 1300px;
-}
-
-.input-group label {
-  display: block;
-  font-size: 1.8em;
-  margin-bottom: 0px;
-}
-
-.input-group,
 .checkbox,
 .btns {
   margin-left: 0px;
 }
 
-.input-group label,
-.checkbox label {
-  display: inline-block;
-  width: 200px;
-}
-
-#next_btn {
-  text-align: center;
-  margin-top: 25px;
-}
-
-.selected {
-  background-color: #6800cd;
-  /* 보라색 배경 */
-  color: white;
-  /* 흰색 텍스트 */
-}
-
-#longitude {
-  position: relative;
-  top: 15px;
-}
-
-#hasImeage {
-  position: relative;
-  top: 22px;
-}
-
-:root {
-  --wehome-color: #6800cd;
-}
-
-/* initial */
-body,
-div,
-dl,
-dt,
-dd,
-ul,
-ol,
-li,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-pre,
-form,
-fieldset,
-input,
-p,
-blockquote,
-th,
-td {
-  margin: 0;
-  padding: 0;
-  color: #202020;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 100%;
-}
-
-img,
-fieldset {
-  border: 0;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  border: 0;
-}
-
-caption,
-th {
-  text-align: left;
-}
-
-q:before,
-q:after {
-  content: "";
-}
-
-/* page default style */
-a,
-a:link,
-a:visited,
-a:active {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-main.admin ul.table li span.cell {
-  padding: 10px 0;
-  font-size: 20px;
-}
 
 main.newadd {
-  margin-bottom: 100px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin: 20px;
+  width: 80%;
+  max-width: 1100px;
 }
 
-main.newadd h1 {
-  font-size: 48px;
+
+.input-group {
+  margin-bottom: 20px;
+}
+#option {
+  margin-bottom: 20px;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+.newest {
+  font-weight: bold;
   text-align: center;
+  margin-bottom: 30px;
+}
+.newest-content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.input-group-type,
+input[type="text"],
+input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-size: 14px;
+}
+
+/* 옵션 체크박스 스타일링 */
+
+/* 버튼 스타일링 */
+.btns {
+  text-align: center;
+  margin-top: 20px;
+}
+.page-content {
   margin-top: 100px;
 }
 
-main.newadd h2 {
-  font-size: 24px;
-  font-weight: normal;
-  margin-bottom: 10px;
-  display: block;
-}
-
-main.newadd ul.type {
-  overflow: hidden;
-  margin-bottom: 30px;
-  margin-top: 50px;
-}
-
-main.newadd ul.type li {
-  float: left;
-}
-
-main.newadd ul.type li.title {
-  font-size: 24px;
-  width: 220px;
-  line-height: 51px;
-}
-
-main.newadd ul.type li.type {
-  margin-right: 20px;
-}
-
-main.newadd ul.type li.type a {
+.btn {
+  background-color: #24a1b4; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
   text-align: center;
-  display: block;
-  font-size: 18px;
-  color: #202020;
-  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 40px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-main.newadd ul.circle li.type a {
-  border: 2px solid #999;
-  color: #999;
-  border-radius: 50%;
-  font-size: 30px;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  padding: 0;
+.btn:hover {
+  background-color: #45a049;
 }
 
-main.newadd ul.type li div.selectbox_arr {
-  margin-top: 5px;
-}
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+  main.newadd {
+    width: 95%;
+    padding: 20px;
+  }
 
-main.newadd div.btns {
-  text-align: center;
-}
-
-main.newadd div.btns a.btn {
-  padding: 0 100px;
+  .register_ {
+    font-size: 24px;
+  }
 }
 </style>
