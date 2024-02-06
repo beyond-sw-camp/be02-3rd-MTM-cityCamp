@@ -4,8 +4,6 @@
 ![캠핑온탑-001](https://github.com/beyond-sw-camp/be02-2nd-MTM-cityCamp/assets/105422037/90d4ac16-a769-498b-912a-7ca4265230ad)
 
 - 배포 URL :
-- Test ID : dlaxodn9999@gmail.com
-- Test PW : qwer1234@
 
 <br>
 <br>
@@ -23,9 +21,46 @@
 <br>
 <br>
 
+# ✒️ 사용 기술 스택
+
+- **Vue.js**
+  - 설명
+- **JWT**
+  - 설명
+- **MySQL 8.0.32**
+  - 설명
+- **Spring 서버 배포(AWS EC2)**
+- 설명
+- **Spring Config 서버 배포(AWS EC2)**
+- 설명
+
+<br />
+<div align="center">
+	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
+	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+	<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
+  <img src="https://img.shields.io/badge/vuejs-%2335495e.svg?style=flat&logo=vuedotjs&logoColor=%234FC08D" />
+
+  <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jQuery&logoColor=white" />
+  <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=Bootstrap&logoColor=white" />
+
+  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=SpringBoot&logoColor=white" />
+  <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Conda-Forge&logoColor=white" />
+
+  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
+
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
+
+  <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=Ubuntu&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>
+
+  <br>
+
+</div>
+
 # 🖥️ System Architecture
 
-[campingOnTop System Architecture](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/ffbd64e0-c261-4e11-990f-ceb24f9a56b6")
+[campingOnTop System Architecture](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/a2298147-69fa-405e-9485-79b89b706371)
 
 <br>
 <br>

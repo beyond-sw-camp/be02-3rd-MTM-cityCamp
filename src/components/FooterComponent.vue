@@ -103,7 +103,9 @@ footer {
   padding-top: 50px ;
   padding-bottom: 50px ;
   font-size: 0.8rem;
+  
 }
+
 footer dt {
   margin-bottom: 5px;
 }
@@ -139,7 +141,10 @@ footer .app_link img {
   footer {
     max-width: 1180px;
     margin: 0 auto;
+    clear:both;
+   
   }
+
 }
 
 </style>
