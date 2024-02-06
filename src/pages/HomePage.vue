@@ -7,7 +7,7 @@
           <div class="sc search_keyword ln">
             <input
               type="text"
-              placeholder="숙소 번호/이름, 장소 검색"
+              placeholder="숙소 이름으로 검색"
               v-model="searchQuery"
               class="search_input text2"
               name="query"
@@ -27,14 +27,18 @@
           </div>
         </div>
       </form>
-      <form name="frmSearch" @submit.prevent="searchHouse" id="frmSearchMain">
+      <form
+        name="frmSearch"
+        @submit.prevent="searchHouseByAddr"
+        id="frmSearchMain"
+      >
         <input type="hidden" name="ks" value="1" />
         <div class="search_box wh_shadow">
           <div class="sc search_keyword ln">
             <input
               type="text"
               placeholder="숙소 주소로 검색"
-              v-model="searchQuery2"
+              v-model="searchQueryByAddr"
               class="search_input text2"
               name="query"
               autocomplete="off"
@@ -53,6 +57,7 @@
           </div>
         </div>
       </form>
+      <!--
       <div id="wh_fav_area" class="wh_shadow">
         <h6>서울 인기지역</h6>
         <div class="row no-gutters">
@@ -172,14 +177,13 @@
         </div>
       </div>
       -->
-
     </section>
 
     <main class="mainClass">
-      <!--
       <section id="category">
         <div class="swiper-container category_slide">
           <ul class="swiper-wrapper">
+            <!--
             <li
               class="swiper-slide"
               data-type="subway"
@@ -191,6 +195,8 @@
               />
               <h6>역세권</h6>
             </li>
+            -->
+            <!--
             <li
               class="swiper-slide"
               data-type="subway"
@@ -202,10 +208,11 @@
               />
               <h6>내 주변</h6>
             </li>
+            -->
             <li
               class="swiper-slide"
               data-type="budget"
-              onclick="window.dataLayer.push({event: 'click_home',click_target: 'budget'});"
+              @click="searchHouseOrderByPriceAsc()"
             >
               <img
                 src="@/assets/images/home/arrow-down-short-wide-solid.svg"
@@ -216,7 +223,7 @@
             <li
               class="swiper-slide"
               data-type="premium"
-              onclick="window.dataLayer.push({event: 'click_home',click_target: 'premium'});"
+              @click="searchHouseOrderByPriceDesc()"
             >
               <img
                 src="@/assets/images/home/arrow-up-wide-short-solid.svg"
@@ -226,16 +233,29 @@
             </li>
             <li
               class="swiper-slide"
+              data-type="likes"
+              @click="searchHouseOrderByLikeCntDesc()"
+            >
+              <img
+                src="@/assets/images/home/thumbs-up-solid.svg"
+                width="32"
+              />
+              <h6>인기 많은 순</h6>
+            </li>
+            <!--
+            <li
+              class="swiper-slide"
               data-type="bbq"
               onclick="window.dataLayer.push({event: 'click_home',click_target: 'bbq'});"
             >
               <img src="@/assets/images/home/fire-solid.svg" width="24" />
               <h6>바베큐</h6>
             </li>
+            -->
           </ul>
         </div>
       </section>
-      -->
+
       <section id="main_lists" class="container">
         <div class="row">
           <div
@@ -281,8 +301,10 @@
                 <h6 class="card-subtitle">{{ house.address }}</h6>
                 <h6 class="card-likeCnt">❤ {{ house.likeCnt }}</h6>
                 <div class="p_price">
-                  <span class="price">{{ house.price }}원</span>
-                  <span class="night">/1박당</span>
+                  <span class="price"
+                    >{{ house.price.toLocaleString() }}원</span
+                  >
+                  <span class="night"> /1박당</span>
                 </div>
               </div>
             </div>
@@ -315,7 +337,7 @@
               active: houseStore.currentPage === page,
             }"
           >
-            <button class="page-link" @click="changePage(page)">
+            <button class="page-link" @click="changePage(page, 40)">
               {{ page }}
             </button>
           </li>
@@ -353,18 +375,21 @@ export default {
       houseList: [],
       swiper: null,
       searchQuery: "",
-      searchQuery2: "",
+      searchQueryByAddr: "",
     };
   },
   computed: {
     ...mapStores(useMemberStore, useHouseStore),
     pageArray() {
-      return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+      return Array.from(
+        { length: Math.ceil(this.totalPages) },
+        (_, index) => index + 1
+      );
     },
   },
   components: {},
   async mounted() {
-    await this.houseStore.getHouseList(1, 36);
+    await this.houseStore.getHouseList(1, 40);
     this.initializeSwiper();
     this.totalPages = this.houseStore.totalPages;
   },
@@ -403,11 +428,23 @@ export default {
       });
     },
     async searchHouse() {
-      await this.houseStore.getHouseListByName(1, 36, this.searchQuery);
+      await this.houseStore.getHouseListByName(1, 40, this.searchQuery);
     },
-    async changePage(page) {
+    async searchHouseByAddr() {
+      await this.houseStore.getHouseListByAddr(1, 40, this.searchQueryByAddr);
+    },
+    async searchHouseOrderByPriceDesc() {
+      await this.houseStore.getHouseListOrderByPriceDesc(1, 40);
+    },
+    async searchHouseOrderByPriceAsc() {
+      await this.houseStore.getHouseListOrderByPriceAsc(1, 40);
+    },
+    async searchHouseOrderByLikeCntDesc() {
+      await this.houseStore.getHouseListOrderByLikeCntDesc(1, 40);
+    },
+    async changePage(page, size) {
       console.log("Changing page to:", page);
-      await this.houseStore.getHouseList(page, 36);
+      await this.houseStore.getHouseList(page, size);
       console.log("New house list:", this.houseStore.houseList);
       console.log("Current page after change:", this.houseStore.currentPage);
       console.log(
@@ -482,7 +519,6 @@ export default {
   right: 15px; /* 브라우저 오른쪽 끝에서부터의 거리 */
   z-index: 99;
 }
-
 
 element.style {
   transition-duration: 0ms;
@@ -590,36 +626,55 @@ body {
   box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-toggle.btn:focus {
-  outline: none;
-  box-shadow: none;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
-.dropdown-menu {
-  box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.1);
-  border: 0;
+
+.dropbtn_icon {
+  font-family: "Material Icons";
 }
-.dropdown-toggle::after {
-  flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
-  margin-left: auto;
-  content: "";
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-size: 1rem;
-  transition: transform 0.2s ease-in-out;
-  border: 0;
-  vertical-align: middle;
+.dropbtn {
+  border: 1px solid rgb(37, 37, 37);
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  font-weight: 400;
+  color: rgb(37, 37, 37);
+  padding: 12px;
+  width: 200px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1; /*다른 요소들보다 앞에 배치*/
+  font-weight: 400;
+  background-color: #f9f9f9;
+  min-width: 200px;
+}
+
+.dropdown-content a {
+  display: block;
+  text-decoration: none;
+  color: rgb(37, 37, 37);
+  font-size: 12px;
+  padding: 12px 20px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ececec;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 *,
 ::after,
 ::before {
   box-sizing: border-box;
-}
-
-.dropdown-toggle.right_arrow::after {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 
 .modal-open {
@@ -753,7 +808,7 @@ body.sticky header div.head_logo {
 }
 
 .search_box {
-  width:570px;
+  width: 570px;
   height: 56px;
   border: 1px solid #e0e0e0;
   border-radius: 28px;
@@ -761,7 +816,7 @@ body.sticky header div.head_logo {
   display: flex;
 }
 #frmSearchMain {
-  display:inline-block;
+  display: inline-block;
 }
 .search_box div.sc {
   margin: 10px 0 10px 10px;
