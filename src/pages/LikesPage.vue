@@ -3,7 +3,7 @@
     <main id="main">
       <section class="cart__list">
         <div class="cart__information">
-          <h1>좋아요</h1>
+          <h1 style="font-weight: bold;">좋아요</h1>
           <h6>
             😅 좋아요 목록 수정, 삭제 기능은 추후 구현 예정입니다. (추가만 가능)
           </h6>
