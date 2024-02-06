@@ -172,8 +172,11 @@ export default {
     async submitForm() {
       try {
         const response = await this.houseStore.createHouse(this.formData);
-
-        console.log("House created successfully:", response);
+        if (response) {
+          console.log("House created successfully:", response);
+          alert("숙소 등록 성공!");
+          this.$router.push("/details/" + response.id);
+        }
       } catch (error) {
         console.error("Error creating house:", error);
       }
