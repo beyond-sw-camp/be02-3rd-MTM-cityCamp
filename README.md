@@ -128,52 +128,58 @@ Vue.js
 <details>
   <summary style="margin-left: 20px;"><b style="font-size: 16px;">이메일 인증</b></summary>
 
-[campingOnTop 이메일 인증 시연](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/d12f7db7-97cf-4c2e-8c33-fb19a145a93b)
-
+[이메일 인증 시연 영상](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/d12f7db7-97cf-4c2e-8c33-fb19a145a93b)
+[이메일 인증 시연 gif](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/d1b98b01-a8c3-44e9-bb43-51d237d1f719)
 </details>
 
 <details>
   <summary style="margin-left: 20px;"><b style="font-size: 16px;">로그인</b></summary>
 
-[campingOnTop 로그인 기능 시연](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/784671b6-f2ef-4d62-91a9-d6c7abe13d5e)
-
+[로그인 기능 시연 영상](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/784671b6-f2ef-4d62-91a9-d6c7abe13d5e)
+[로그인 기능 시연 gif](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/2486c22a-10e4-40e8-90a0-85c65aef7693)
 </details>
 
 <details>
   <summary style="margin-left: 20px;"><b style="font-size: 16px;">로그아웃</b></summary>
 
-[campingOnTop 로그아웃 기능 시연](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/a85336c7-2074-4d74-83bb-126256a78c08)
+[로그아웃 기능 시연 영상](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/a85336c7-2074-4d74-83bb-126256a78c08)
+[로그아웃 기능 시연 gif](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/fba6d743-4772-4cdf-b87e-e1e159940f02)
 
 </details>
 
 <details>
   <summary style="margin-left: 20px;"><b style="font-size: 16px;">숙소 검색</b></summary>
 
-[campingOnTop 이름으로 검색 기능 시연](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/c6b5b0cf-29f4-4297-9d39-d4116f0ecb68)
+[숙소 이름으로 검색 기능 시연 영상](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/c6b5b0cf-29f4-4297-9d39-d4116f0ecb68)
+[숙소 이름으로 검색 기능 시연 gif](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/ebb9792f-ac91-4f9d-b2f0-1c2b6cf66fdd)
+
 <br>  
-[campingOnTop 주소로 검색 기능 시연](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/5a1a9497-a53e-44f3-a110-2a9e66ac481a)
+
+[숙소 주소로 검색 기능 시연 영상](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/5a1a9497-a53e-44f3-a110-2a9e66ac481a)
+[숙소 주소로 검색 기능 시연 gif](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/0e7641b5-70a0-4aa5-bd4e-faa5da251880)
 
 </details>
 
 <details>
   <summary style="margin-left: 20px;"><b style="font-size: 16px;">숙소 등록</b></summary>
 
-[campingOnTop 숙소 등록 기능 시연](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/e43b04bc-8481-4b56-9b46-34f04bb8bc6f
-)
+[숙소 등록 기능 시연 영상](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/e43b04bc-8481-4b56-9b46-34f04bb8bc6f)
+[숙소 등록 기능 시연 gif](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/a3762cb0-18a6-4f38-ad89-058c7669fd2a)
 
 </details>
 
 <details>
   <summary style="margin-left: 20px;"><b style="font-size: 16px;">좋아요</b></summary>
 
-[campingOnTop 좋아요 기능 시연](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/9383cf9a-8d7e-4def-8a6e-2ad7206f0722)
+[좋아요 기능 시연 영상](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/9383cf9a-8d7e-4def-8a6e-2ad7206f0722)
+[좋아요 기능 시연 gif](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/3791fb00-3450-443a-8e64-503cdec82c5b)
 
 </details>
 
 <details>
   <summary style="margin-left: 20px;"><b style="font-size: 16px;">장바구니</b></summary>
 
-[campingOnTop 장바구니 기능 시연](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/83215b61-a975-4c3b-85ba-aced116884e3)
-
+[장바구니 기능 시연 영상](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/144295389/83215b61-a975-4c3b-85ba-aced116884e3)
+[장바구니 기능 시연 gif](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/a1b5356f-fb60-496b-9f49-11a22942568d)
 </details>
 </details>
