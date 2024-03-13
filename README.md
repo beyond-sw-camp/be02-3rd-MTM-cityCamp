@@ -1,6 +1,6 @@
 # 🏕️ 캠핑온탑 campingOnTop
 
-![캠핑온탑 로고](https://github.com/Tesssssssssy/HanwhaBC-be02-campingOnTop-config/assets/105422037/177289fc-5e89-4907-aea1-c5eb453c4059)
+![campingontop logo](https://github.com/beyond-sw-camp/be02-3rd-MTM-cityCamp/assets/105422037/84f38b82-a3e6-4ed8-9b0f-e7b57cd52400)
 ![캠핑온탑-001](https://github.com/beyond-sw-camp/be02-2nd-MTM-cityCamp/assets/105422037/90d4ac16-a769-498b-912a-7ca4265230ad)
 
 <br>
