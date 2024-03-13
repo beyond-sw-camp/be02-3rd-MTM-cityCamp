@@ -107,7 +107,7 @@
 <br>
 <br>
 
-# 📜 Front End 요구사항 명세서 (진행중)
+# 📜 Front End 요구사항 명세서
 [campingOnTop Front 요구 사항 명세서](https://docs.google.com/spreadsheets/d/1M9KUdkTvYwlbRystq-_26WpynnnbtVQdG6v5hFsb93Y/edit#gid=1284096346)
 
 <br>
